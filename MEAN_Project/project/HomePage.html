@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="homeApp" ng-controller="homeController">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenditure Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="homeModule.js"></script>
+    <script>
+        // Check session status on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/api/session')
+                .then(response => {
+                    if (!response.ok) {
+                        // If session is invalid, redirect to login.html
+                        window.location.href = 'login.html';
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.isAuthenticated) {
+                        console.log(`Welcome back, ${data.email}!`);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking session:', error);
+                    window.location.href = 'login.html'; // Redirect to login.html if error occurs
+                });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <h1>Expenditure Tracker</h1>
+            <ul>
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><button ng-click="logout()">Logout</button></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h2>Track Your Expenses Easily</h2>
+            <p>Monitor your spending, manage budgets, and save for the future.</p>
+            <a href="features.html"><button>Get Started</button></a>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CAUC514 Practical Assignment 1</title>
+</head>
+<body>
+
+    <div id="loginSection">
+        <h2>Login Form</h2>
+        <input type="text" id="loginId" placeholder="Enter ID"><br><br>
+        <input type="password" id="loginPass" placeholder="Enter Password"><br><br>
+        <button onclick="handleLogin()">Login</button>
+        <p>New user? <button onclick="showRegister()">Register</button></p>
+    </div>
+
+    <div id="regSection" style="display:none;">
+        <h2>Registration Form</h2>
+        <input type="text" id="regId" placeholder="New ID"><br><br>
+        <input type="password" id="regPass" placeholder="New Password"><br><br>
+        <select id="regRole">
+            <option value="student">Student</option>
+            <option value="admin">Admin</option>
+        </select><br><br>
+        <button onclick="handleRegister()">Submit Registration</button>
+        <button onclick="showLogin()">Back to Login</button>
+    </div>
+
+    <div id="dashboardSection" style="display:none;">
+        <h2 id="welcomeMsg"></h2>
+        
+        <div id="adminPanel" style="display:none;">
+            <h3>Admin Panel - All Users</h3>
+            <input type="text" id="searchBox" onkeyup="searchUser()" placeholder="Search by ID...">
+            <table border="1" id="userTable" style="margin-top: 10px; width: 100%;">
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody"></tbody>
+            </table>
+        </div>
+
+        <div id="studentPanel" style="display:none;">
+            <h3>Your Details</h3>
+            <p id="myDetails"></p>
+        </div>
+
+        <br><button onclick="showLogin()">Logout</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

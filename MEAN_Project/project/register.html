@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="registerApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="register.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        form {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        td {
+            padding: 10px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 90%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="reset"] {
+            background-color: #FF6B6B;
+        }
+
+        input[type="reset"]:hover {
+            background-color: #b32828;
+        }
+
+        td:nth-child(1) {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body ng-controller="registerCtrl">
+    <h2>Register</h2>
+    <form method="post">
+        <table border="0">
+            <tr>
+                <td>UserName</td>
+                <td><input type="text" name="nm" ng-model="newuser.username"></td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td><input type="text" name="age" ng-model="newuser.age"></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td><input type="radio" name="gender" value="male" ng-model="newuser.gender">Male
+                    <input type="radio" name="gender" value="female" ng-model="newuser.gender">Female</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="email" name="em" ng-model="newuser.email"></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" id="ps" ng-model="newuser.password"></td>
+            </tr>
+            <tr>
+                <td>Confirm Password</td>
+                <td><input type="password" id="cps"></td>
+            </tr>
+            <tr>
+                <td><input type="reset" value="Clean"></td>
+                <td><input type="submit" name="login" value="Submit" ng-click="register(newuser)"></td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        const passwordField = document.getElementById('ps');
+        const confirmPasswordField = document.getElementById('cps');
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) 
+        {
+            if (passwordField.value !== confirmPasswordField.value) 
+            {
+                alert('Passwords do not match!');
+                event.preventDefault(); 
+            }
+        });
+    </script>
+</body>
+</html>

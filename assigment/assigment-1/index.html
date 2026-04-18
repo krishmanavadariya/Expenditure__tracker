@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAUC514 Assignment 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <section id="login-section" class="form-card">
+            <h2>System Login</h2>
+            <input type="text" id="login-id" placeholder="Enter User ID">
+            <input type="password" id="login-pass" placeholder="Enter Password">
+            <button id="login-btn">Login</button>
+            <p>New user? <span class="toggle-link" onclick="showSection('register-section')">Register here</span></p>
+        </section>
+
+        <section id="register-section" class="form-card" style="display:none;">
+            <h2>Register Account</h2>
+            <input type="text" id="reg-id" placeholder="Create User ID">
+            <input type="password" id="reg-pass" placeholder="Create Password">
+            <select id="reg-role">
+                <option value="student">Student</option>
+                <option value="admin">Admin</option>
+            </select>
+            <button id="reg-btn">Register</button>
+            <p>Already registered? <span class="toggle-link" onclick="showSection('login-section')">Back to Login</span></p>
+        </section>
+
+        <section id="dashboard" class="form-card" style="display:none;">
+            <h2 id="welcome-header"></h2>
+            
+            <div id="admin-panel" style="display:none;">
+                <h3>User Management</h3>
+                <input type="text" id="search-bar" placeholder="Search by ID...">
+                <table id="user-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body"></tbody>
+                </table>
+            </div>
+
+            <div id="student-panel" style="display:none;">
+                <h3>My Profile</h3>
+                <div id="profile-data"></div>
+            </div>
+
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
